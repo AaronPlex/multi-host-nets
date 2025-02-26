@@ -1,6 +1,6 @@
 
 library(terra)
-#Non cultivated host species
+# List of non-cultivated host species as named in the raster files
 wild.PSTVd<-c("Argyranthemum frutescens", "Atriplex semilunaris",    
               "Brugmansia ×candida",      "Brugmansia sanguinea",    
               "Brugmansia suaveolens",    "Calibrachoa sp",         
@@ -62,6 +62,7 @@ wild.Tuta<-c("Amaranthus spinosus", "Amaranthus viridis",
              "Solanum umbellatum", "Solanum villosum",         
              "Vicia faba",  "Xanthium strumarium")
 
+# Loading raster files for each host species
 main.raster<-rast(paste0(wild.RSIIB[1],".tif"))
 names(main.raster)<-wild.RSIIB[1]
 
@@ -72,7 +73,7 @@ for (i in 1:length(wild.RSIIB)) {
   main.raster<-rast(main.raster)
 }
 
-# Cultivated host species
+# List of cultivated host species
 crop.PSTVD<-c("Capsicum annuum", "Persea americana", "Solanum lycopersicum", "Solanum tuberosum")
 crop.RSIIB<-c("Capsicum annuum", "Cucumis melo",  "Cucumis sativus", "Citrullus lanatus",
               "Cucurbita pepo","Musa acuminata",  "Musa paradisiaca", "Musa sp.",
@@ -82,75 +83,77 @@ crop.Tuta<-c("Beta vulgaris", "Brassica rapa", "Capsicum annuum", "Citrullus lan
              "Medicago sativa", "Phaseolus vulgaris", "Solanum lycopersicum", 
              "Solanum melongena", "Solanum tuberosum", "Spinacia oleracea")
 
-alfalfa<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_alfalfa.nc")
+# The raster files below need to be downloaded from CROPGRIDS (https://figshare.com/articles/dataset/CROPGRIDS/22491997) and saved on your local directory 
+alfalfa<-rast("C:/Users/CROPGRIDSv1.08_alfalfa.nc")
 alfalfa<-alfalfa$harvarea
 names(alfalfa)<-"Medicago sativa"
 
-avocado<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_avocado.nc")
+avocado<-rast("C:/Users/CROPGRIDSv1.08_avocado.nc")
 avocado<-avocado$harvarea
 names(avocado)<-"Persea americana"
 
-banana<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_banana.nc")
+banana<-rast("C:/Users/CROPGRIDSv1.08_banana.nc")
 banana<-banana$harvarea
 names(banana)<-"Musa sapientum"
 
-bean<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_bean.nc")
+bean<-rast("C:/Users/CROPGRIDSv1.08_bean.nc")
 bean<-bean$harvarea
 names(bean)<-"Phaseolus vulgaris"
 
-beets<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_beetfor.nc")
+beets<-rast("C:/Users/CROPGRIDSv1.08_beetfor.nc")
 beets<-beets$harvarea
 names(beets)<-"Beta vulgaris"
 
-cucumber<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_cucumberetc.nc")
+cucumber<-rast("C:/Users/CROPGRIDSv1.08_cucumberetc.nc")
 cucumber<-cucumber$harvarea
 names(cucumber)<-"Cucumis sativus"
 
-eggplant<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_eggplant.nc")
+eggplant<-rast("C:/Users/CROPGRIDSv1.08_eggplant.nc")
 eggplant<-eggplant$harvarea
 names(eggplant)<-"Solanum melongena"
 
-melon<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_melonetc.nc")
+melon<-rast("C:/Users/CROPGRIDSv1.08_melonetc.nc")
 melon<-melon$harvarea
 names(melon)<-"Cucumis melo"
 
-mustard<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_mustard.nc")
+mustard<-rast("C:/Users/CROPGRIDSv1.08_mustard.nc")
 mustard<-mustard$harvarea
 names(mustard)<-"Brassica rapa"
 
-peppers<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_pepper.nc")
+peppers<-rast("C:/Users/CROPGRIDSv1.08_pepper.nc")
 peppers<-peppers$harvarea
 names(peppers)<-"Capsicum annuum"
 
-plantain<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_plantain.nc")
+plantain<-rast("C:/Users/CROPGRIDSv1.08_plantain.nc")
 plantain<-plantain$harvarea
 names(plantain)<-"Musa paradisiaca"
 
-potato<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_potato.nc")
+potato<-rast("C:/Users/CROPGRIDSv1.08_potato.nc")
 potato<-potato$harvarea
 names(potato)<-"Solanum tuberosum"
 
-pumpkin<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_pumpkinetc.nc")
+pumpkin<-rast("C:/Users/CROPGRIDSv1.08_pumpkinetc.nc")
 pumpkin<-pumpkin$harvarea
 names(pumpkin)<-"Cucurbita pepo"
 
-spinach<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_spinach.nc")
+spinach<-rast("C:/Users/CROPGRIDSv1.08_spinach.nc")
 spinach<-spinach$harvarea
 names(spinach)<-"Spinacia oleracea"
 
-tomato<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_tomato.nc")
+tomato<-rast("C:/Users/CROPGRIDSv1.08_tomato.nc")
 tomato<-tomato$harvarea
 names(tomato)<-"Solanum lycopersicum"
 
-watermelon<-rast("C:/Users/plexaaron/UFL Dropbox/Aaron Plex Sula/168/2022/2022 Projects/Pathogen biogeography/Predictor variables/Global cropland density/CROPGRIDS/CROPGRIDSv1.08_watermelon.nc")
+watermelon<-rast("C:/Users/CROPGRIDSv1.08_watermelon.nc")
 watermelon<-watermelon$harvarea
 names(watermelon)<-"Citrullus lanatus"
 
 #crop.rast<-list(alfalfa, bean, beets, eggplant, mustard, peppers, potato, 
-#                spinach, tomato, watermelon) 
-#crop.rast<-list(avocado, peppers, potato, tomato)
+#                spinach, tomato, watermelon) # List of cultivated species for Tuta absoluta
+#crop.rast<-list(avocado, peppers, potato, tomato) # List of cultivated species for PSTVd
 crop.rast<-list(banana,cucumber,eggplant,melon,peppers,plantain,
-                potato,pumpkin,tomato,watermelon)
+                potato,pumpkin,tomato,watermelon) # List of cultivated species for RSIIB-1
+
 crop.rast<-rast(crop.rast)
 values(crop.rast)<-ifelse(values(crop.rast)>3, 
                           values(crop.rast), NaN)
@@ -171,16 +174,19 @@ second.raster<-list(main.raster[[2:37]], crop.rast)
 second.raster<-rast(second.raster)
 layer.names<-names(second.raster)
 
-secondary.RSIIB1<-c("Solanum tuberosum","Solanum lycopersicum","Solanum dulcamara") #maybe also geranium
+# Below is a list of major host species for the target pest
+major.RSIIB1<-c("Solanum tuberosum","Solanum lycopersicum","Solanum dulcamara") #maybe also geranium for RSIIB-1
 
+# The code below multiply by 10% if the species are only a minor host
 for (i in 1:nlyr(second.raster)) {
-  if (!layer.names[i] %in% secondary.RSIIB1) {
+  if (!layer.names[i] %in% major.RSIIB1) {
     second.raster[[i]] <- second.raster[[i]] * 0.1
   }
 }
 
 names(second.raster)
 
+# Generating rasters for cummulative host density and richness
 cum.density<-sum(second.raster, na.rm = TRUE)
 alt.density<-sum(second.raster[[c(1:31,33:42,44,46)]], na.rm = TRUE)
 wild.density<-sum(second.raster[[1:36]], na.rm = TRUE)
