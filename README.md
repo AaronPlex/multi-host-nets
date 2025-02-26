@@ -1,5 +1,5 @@
 # multi-host-nets
-This is a repository for the analysis of multi-host landscape connectivity.
+This is a repository for the global analysis of multi-host landscape connectivity.
 
 1GBIF-host-density-individual.R 
 
