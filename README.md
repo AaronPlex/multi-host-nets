@@ -11,5 +11,5 @@ This is a repository for the analysis of multi-host landscape connectivity.
 
 3Host-connectivity.R
 
-* This R file provides the code to run the multi-host connectivity analysis. Note that the connectivity analyses were run by the University of Florida HiPerGator using extensive computational resources. For the latest package version, please refer to the (geohabnet repository)[https://github.com/GarrettLab/HabitatConnectivity].
+* This R file provides the code to run the multi-host connectivity analysis. Note that the connectivity analyses were run by the University of Florida HiPerGator using extensive computational resources. For the latest package version, please refer to the [geohabnet repository](https://github.com/GarrettLab/HabitatConnectivity).
 
