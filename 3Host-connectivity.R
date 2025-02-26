@@ -1,6 +1,6 @@
 
 library(terra)
-all.hosts<-rast("Tabsoluta-hosts.tif")
+all.hosts<-rast("Tabsoluta-hosts.tif") # Upload the raster with host density information
 host.density<-all.hosts$`Total density`
 host.density<-host.density^(1/2)
 
@@ -12,6 +12,7 @@ west.ext<-c(-180, -25, -60, 90)
 east.ext<-c(-25, 180, -60, 90)
 global.ext<-c(-180,180,-60,90)
 
+# Below is the code template to run the host connectivity analysis
 host.net<-msean(host.density,
                   global = FALSE,
                   geoscale = west.ext,
@@ -31,11 +32,12 @@ names(out.net)<-c("mean.net","var.net","diff.net")
 writeRaster(out.net, "Tuta-betweeness-west.tif", overwrite=TRUE)
 options(future.globals.maxSize = global_maxsize)
 
+## Below are the host density thresholds (or hd_threshold) used for each pest
 #PSVTd.hdensity<-0.02
 #RSIIB.hdensity<-0.02
 #ToBRFV.hdensity<-0.02
 #Tuta.hdensity<-0.03
 
-
+## Below are the network metrics (or mets) used in the analyses
 #"eigenvector_centrality", "sum_of_nearest_neighbors", "page_rank"
 #"node_strength", "betweeness", "closeness"
