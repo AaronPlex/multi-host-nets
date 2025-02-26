@@ -3,7 +3,7 @@ library(terra)
 library(viridis)
 vir.pal<-viridis(n=100, option = "viridis")
 
-hostOccGBIF<-read.csv("Xanthosoma.csv", header = TRUE, sep = "\t")
+hostOccGBIF<-read.csv("Xanthosoma.csv", header = TRUE, sep = "\t") #This is the csv file downloaded manually from GBIF.
 unique(hostOccGBIF$species)
 length(hostOccGBIF$species)
 
@@ -35,7 +35,7 @@ plot(rasterHost)
 rasterHost
 #to convert into host density maps
 f<-24
-##rasterHost <- focal(rasterHost, 3, mean, na.policy="all", na.rm=TRUE)
+##rasterHost <- focal(rasterHost, 3, mean, na.policy="all", na.rm=TRUE) #This step is optional.
 values(rasterHost)<-ifelse(values(rasterHost)>=10, 10, values(rasterHost))
 ag.rast<-aggregate(rasterHost, fact = f, fun = sum, na.rm=TRUE)/(4*f^2)
 plot(ag.rast, col = vir.pal)
